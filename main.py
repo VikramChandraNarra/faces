@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 import wikipediaapi
 import requests
+import os  # Import os module
 
 app = Flask(__name__)
 
@@ -38,7 +39,6 @@ def get_celebrity_info():
     # Get the celebrity description
     description = get_celebrity_description(name)
     if not description:
-        
         return jsonify({'error': 'Celebrity not found on Wikipedia'}), 404
     
     # Get the celebrity image link
@@ -54,4 +54,4 @@ def get_celebrity_info():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
