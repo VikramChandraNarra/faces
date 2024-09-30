@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import wikipediaapi
 import requests
-import os  # Import os module
+import os
 
 app = Flask(__name__)
 
@@ -10,6 +10,11 @@ wiki_wiki = wikipediaapi.Wikipedia(
     language='en',
     user_agent="CelebrityInfoApp/1.0 (https://yourappurl.com/; contact@yourapp.com)"
 )
+
+# Root route
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Welcome to the Celebrity Info API! Use the '/celebrity' endpoint to get information."})
 
 # Helper function to get the Wikipedia page summary
 def get_celebrity_description(name):
