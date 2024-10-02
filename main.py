@@ -40,6 +40,9 @@ def get_celebrity_info():
     name = request.args.get('name')
     if not name:
         return jsonify({'error': 'Please provide a celebrity name'}), 400
+
+    # Replace underscores with spaces in the provided name
+    formatted_name = name.replace('_', ' ')
     
     # Get the celebrity description
     description = get_celebrity_description(name)
@@ -53,10 +56,11 @@ def get_celebrity_info():
 
     # Return the result as JSON
     return jsonify({
-        'name': name,
+        'name': formatted_name,  # Return the formatted name
         'description': description,
         'image_url': image_url
     })
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8000)), debug=True)
+    pass
