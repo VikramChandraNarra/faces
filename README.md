@@ -7,6 +7,9 @@
 With the help of FacesX, you'll never forget a familiar face!
 
 ---
+![Image 1 Description](./image1.png)
+![Image 2 Description](./image2.png)
+![Image 3 Description](./image3.png)
 
 ## Features
 
